@@ -126,7 +126,24 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
+
+
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-#allowing hosting in vercel
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# Allowed hosts
+ALLOWED_HOSTS = ['.vercel.app']
+
+# Database settings for SQLite (or configure for your database)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+# Security settings (modify for your needs)
+DEBUG = False
+SECRET_KEY = os.environ.get('SECRET_KEY', 'your-default-secret-key')

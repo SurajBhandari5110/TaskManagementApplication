@@ -185,3 +185,7 @@ wrapt==1.15.0
 xhtml2pdf==0.2.11
 yarl==1.9.2
 zipp==3.15.0
+Django>=3.0,<4.0
+gunicorn
+Django>=3.0,<4.0
+gunicorn
