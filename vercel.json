@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
       {
-        "src": "TaskManagementApplication/wsgi.py",
+        "src": "TaskM_anagement_Application/wsgi.py",
         "use": "@vercel/python",
         "config": {
           "maxLambdaSize": "50mb"
@@ -16,7 +16,7 @@
       },
       {
         "src": "/(.*)",
-        "dest": "TaskManagementApplication/wsgi.py"
+        "dest": "Task_Management_Application/wsgi.py"
       }
     ]
   }
