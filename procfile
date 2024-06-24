@@ -1,1 +1,0 @@
-web: gunicorn TaskManagementApplication.wsgi --log-file -

@@ -1,0 +1,10 @@
+{
+    "version": 2,
+    "builds": [
+      { "src": "TaskManagementApplication/wsgi.py", "use": "@vercel/python" }
+    ],
+    "routes": [
+      { "src": "/(.*)", "dest": "TaskManagementApplication/wsgi.py" }
+    ]
+  }
+  
