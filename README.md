@@ -34,7 +34,7 @@ This is a simple Task Management Application built with Django and Django REST F
 5. Access the application at `http://localhost:8000`.
 
 ## Deployment
-- Deployed on [Heroku/Vercel/etc.].
+- Deployed on [Vercel].
 - Live demo: [Live Demo Link]
 
 ## Design Choices
@@ -42,7 +42,7 @@ This is a simple Task Management Application built with Django and Django REST F
 - Used HTML, CSS, and JavaScript for the front-end to keep it simple and straightforward.
 
 ## Challenges Faced
-- [Detail any challenges you faced]
+- This is first time I'm deploying my project live so from this project i learn alot how i can make fullstack app and deploy on vercel.
 
 ## Future Improvements
 - new features like giving priorities to task,notification on deu date.
