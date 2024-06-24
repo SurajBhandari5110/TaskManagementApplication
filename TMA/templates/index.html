@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Task Manager</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    
+    #task-list {
+        margin-top: 20px;
+    }
+    
+    #task-form {
+        margin-top: 20px;
+    }    
+</style>
+
+<body>
+    <div id="app">
+        <h1>Task Manager</h1>
+        <div id="task-list"></div>
+        <form id="task-form">
+            <input type="text" id="title" placeholder="Title">
+            <textarea id="description" placeholder="Description"></textarea>
+            <input type="date" id="due_date">
+            <button type="submit">Add Task</button>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const taskList = document.getElementById('task-list');
+            const taskForm = document.getElementById('task-form');
+        
+            const fetchTasks = () => {
+                fetch('/api/tasks/')
+                    .then(response => response.json())
+                    .then(data => {
+                        taskList.innerHTML = '';
+                        data.forEach(task => {
+                            const taskItem = document.createElement('div');
+                            taskItem.innerHTML = `
+                                <h3>${task.title}</h3>
+                                <p>${task.description}</p>
+                                <p>${task.due_date}</p>
+                                <button onclick="deleteTask(${task.id})">Delete</button>
+                                <button onclick="editTask(${task.id})">Edit</button>
+                            `;
+                            taskList.appendChild(taskItem);
+                        });
+                    });
+            };
+        
+            const createTask = (task) => {
+                fetch('/api/tasks/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(task),
+                }).then(fetchTasks);
+            };
+        
+            taskForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const task = {
+                    title: document.getElementById('title').value,
+                    description: document.getElementById('description').value,
+                    due_date: document.getElementById('due_date').value,
+                };
+                createTask(task);
+            });
+        
+            fetchTasks();
+        });
+        
+        const deleteTask = (id) => {
+            fetch(`/api/tasks/${id}/`, {
+                method: 'DELETE',
+            }).then(() => {
+                document.getElementById('task-list').innerHTML = '';
+                fetchTasks();
+            });
+        };
+        
+        const editTask = (id) => {
+        };
+        
+    </script>
+</body>
+</html>
