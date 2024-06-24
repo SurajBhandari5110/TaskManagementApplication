@@ -45,7 +45,7 @@ This is a simple Task Management Application built with Django and Django REST F
 - [Detail any challenges you faced]
 
 ## Future Improvements
-- [Detail any planned improvements]
+- new features like giving priorities to task,notification on deu date.
 
 ## License
 This project is licensed under the MIT License.
